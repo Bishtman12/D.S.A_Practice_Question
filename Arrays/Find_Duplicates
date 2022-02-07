@@ -1,0 +1,46 @@
+# find duplicates in the array
+A = [1,3,4,2,2]
+
+def sorting(A):
+    A.sort()
+    for i in range(len(A)-1):
+        if A[i]==A[i+1]:
+            return A[i]
+    return None
+def hashmap(A):
+    map = {}
+    for i in range(len(A)):
+        if A[i] in map:
+            return A[i]
+        map[A[i]] = 1
+    return A[i]
+def cycle_detection(A):
+    slow = A[0]
+    fast = A[0]
+    while True:
+        slow = A[slow]
+        fast = A[fast]
+        if slow == fast:
+            break
+    x = A[0]
+    y = slow
+    while x!=y:
+        x = A[x]
+        y = A[y]
+    return x
+def sumBit(A):
+    pass
+def negative_marking(A): # marking the index negative to find dupli
+    i = 0
+    while i<len(A):
+        find = A[i]
+        if A[find]<0:
+            return abs(A[find])
+        else:
+            A[find] = -A[find]
+        i += 1
+
+print(f"Using Sort Method->[{sorting(A)}]")
+print(f"Using Hashmap Method->[{hashmap(A)}]")
+print(f"Using Hashmap Method->[{cycle_detection(A)}]")
+print(f"Using Negative Marking->[{negative_marking(A)}]")
